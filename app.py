@@ -1,9 +1,17 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
+app.template_folder = ''
 
 
 @app.route('/<int:num>')
+def index(num):
+    primes = get_list(num)
+
+    return render_template('index.html',
+                           primes=primes)
+
+
 def get_list(num):
     primes = []
     for prime in range(1, num):
@@ -13,7 +21,8 @@ def get_list(num):
                     break
             else:
                 primes.append(prime)
-    return {'Prime numbers in given range are as follows': primes}
+
+    return primes
 
 
 if __name__ == '__main__':
