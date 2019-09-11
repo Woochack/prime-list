@@ -10,6 +10,7 @@
   </head>
   <body>
     <div class="container">
+      {{ pagination.links }}
       <div class="table-responsive">
         <table class="table table-hover">
           <thead>
@@ -21,13 +22,14 @@
           <tbody>
             {% for prime in primes %}
             <tr>
-              <td>{{ loop.index }}</td>
+              <td>{{ loop.index + (page - 1) * per_page }}</td>
               <td>{{ prime }}</td>
             </tr>
             {% endfor %}
           </tbody>
         </table>
       </div>
+      {{ pagination.links }}
     </div>
   </body>
 </html>
