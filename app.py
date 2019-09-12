@@ -32,21 +32,27 @@ def paginate_list(num):
 
 
 def get_primes(num, offset=1, per_page=10):
-    primes = get_list(num)
-    return primes[offset: offset + per_page]
+    if num > 1:
+        primes = get_list(num)
+        return primes[offset: offset + per_page]
+    elif num == 1 or num < 1:
+        raise InvalidUsage('Invalid range, please input integer bigger than 1.', status_code=400)
 
 
 def get_list(num):
     primes = []
-    for prime in range(1, num):
-        if prime > 1:
-            for i in range(2, prime):
-                if (prime % i) == 0:
-                    break
-            else:
-                primes.append(prime)
+    if num > 1:
+        for prime in range(1, num):
+            if prime > 1:
+                for i in range(2, prime):
+                    if (prime % i) == 0:
+                        break
+                else:
+                    primes.append(prime)
 
-    return primes
+        return primes
+    elif num == 1 or num < 1:
+        raise InvalidUsage('Invalid range, please input integer bigger than 1.', status_code=400)
 
 
 class InvalidUsage(Exception):
