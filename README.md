@@ -7,7 +7,7 @@ This is a project created as a solution of the task for the Game Analytics, Back
 It is simple RESTful API that is listing all of the PrimeNumbers in the given range.
 - `app.py` main file which consists of routes and methods
 - `index.html` consists of simple html layout based on bootstrap
-- `test_app.py` basics tests for the api
+- `test_app.py` basic tests for the api
 
 #### **Preparing Environment**
 
